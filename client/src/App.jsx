@@ -6,7 +6,9 @@ import LobbyPage from "./components/views/LobbyPage/LobbyPage";
 import LoginPage from "./components/views/LoginPage/LoginPage";
 import RegisterPage from "./components/views/RegisterPage/RegisterPage";
 import Auth from "./hoc/auth";
-import Kakao from "./components/doKakao";
+import Kakao from "./components/Kakao";
+import KakaoAuth from "./components/KakaoAuth"
+import Profile from "./Profile";
 function App() {
   return (
     <Router>
@@ -15,11 +17,16 @@ function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           {/* SpecificComponent, option, adminRoute = null */}
-          <Route exact path="/" component={Auth(LandingPage, false, null)} />
+          <Route exact path="/" component={Auth(LandingPage, false, null)}/>
           <Route exact path="/login" component={Auth(LoginPage, false, null)} />
           <Route exact path="/register" component={Auth(RegisterPage, false, null)}/>
           <Route exact path="/lobby" component={Auth(LobbyPage, true, null)}/>
-          {/* <Route path="/auth/kakao/callback" component={Kakao} /> */}
+          <Route path="/oauth/kakao/callback">
+            <KakaoAuth/>
+          </Route>
+          <Route path="/profile">
+            <Profile/>
+          </Route>
 
         </Switch>
       </div>

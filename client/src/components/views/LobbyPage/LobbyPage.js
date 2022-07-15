@@ -8,7 +8,8 @@ function LobbyPage(props) {
         axios.get(`/api/user/logout`)
         .then(response => {
             if(response.data.success) {
-                props.history.push('/login')
+                alert('로그아웃 되었습니다.');
+                props.history.push('/');
             } else {
                 alert("로그아웃 실패")
             }
