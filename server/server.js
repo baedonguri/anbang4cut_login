@@ -7,8 +7,10 @@ const { User } = require("./models/User");
 const config = require("./config/key");
 const cookieParser = require("cookie-parser");
 
+
 // const localUserRouter = require("./routers/localUserRouter");
 const kakaoRouter = require("./routers/kakaoLogin");
+const { application } = require("express");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -78,7 +80,7 @@ app.get("/api/user/auth", auth, function (req, res) {
     isAuth: true,
     email: req.user.email,
     name: req.user.name,
-    role: req.user.role,
+    // role: req.user.role,
   });
 });
 
@@ -96,7 +98,10 @@ app.get("/api/user/logout", auth, function (req, res) {
 /* =================================================
  *               social Login
  * =================================================*/
-// app.use('/api/user', localUserRouter);
+app.post('/api/user/kakaoLogin', function(req,res){
+  const text = req.body.name;
+  console.log(text);
+});
 
 app.use("/oauth", kakaoRouter);
 

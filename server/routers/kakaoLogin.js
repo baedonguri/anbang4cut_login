@@ -12,7 +12,7 @@ class Kakao {
     this.url = "https://kauth.kakao.com/oauth/token";
     this.clientID = "1c16cb196a174ddce815876521f0b5d4";
     this.clientSecret = "8VaxXb9sOLtW7V5ETHavn4mNcTvouca8";
-    this.redirectUri = "http://localhost:8080/oauth/kakao";
+    this.redirectUri = "http://localhost:3000/oauth/kakao/callback";
     this.code = code;
     // userInfo
     this.userInfoUrl = "https://kapi.kakao.com/v2/user/me";
@@ -89,5 +89,6 @@ router.get(`/:coperation`, async (req, res) => {
     res.send(userInfo);
   //   res.render('/login');
 });
+
 
 module.exports = router;
